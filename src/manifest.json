@@ -1,0 +1,14 @@
+{
+  "name": "Select Related",
+  "id": "1234204646989309417",
+  "api": "1.0.0",
+  "editorType": ["figma"],
+  "main": "plugin.js",
+  "ui": "index.html",
+  "menu": [
+    {"name": "Show UI...", "command": "open"},
+    {"name": "All", "command": "all"},
+    {"name": "Next", "command": "next"},
+    {"name": "Prev", "command": "prev"}
+  ]
+}

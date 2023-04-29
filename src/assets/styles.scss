@@ -1,0 +1,68 @@
+$blue: #4499FF;
+$grey-light: #EDEDED;
+$grey-dark: #666;
+
+body.focused {
+  outline: 4px solid transparentize($blue, .9);
+  outline-offset: -4px;
+}
+
+button {
+  display: inline-block;
+  padding: 3px;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  background: $grey-light;
+
+  &:hover {
+    background: darken($grey-light, 4%);
+  }
+
+  &:active {
+    outline: 2px solid transparentize($blue, .5);
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  path {
+    fill: #555;
+  }
+
+  &:hover path {
+    fill: #000;
+  }
+}
+
+.figma-dark {
+  button {
+    background: $grey-dark;
+
+    &:hover {
+      background: lighten($grey-dark, 10%);
+    }
+
+    &:active {
+      outline: 2px solid $blue;
+    }
+
+    path {
+      fill: #BBB;
+    }
+
+    &:hover path {
+      fill: #FFF;
+    }
+  }
+}
+
+.label {
+  white-space: nowrap;
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
