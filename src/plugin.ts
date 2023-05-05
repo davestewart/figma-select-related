@@ -1,7 +1,8 @@
 import { handleMessage, postMessage } from './utils/messages/plugin'
-import { isNumeric, loop, toArray } from './utils/general'
 import { getSelection, setSelection } from './utils/selection'
+import { isNumeric, wrap } from './utils/number'
 import { isNode, isRoot } from './utils/assert'
+import { toArray } from './utils/array'
 
 // ---------------------------------------------------------------------------------------------------------------------
 // main
@@ -28,7 +29,7 @@ function getByPath (path: string | Array<string | number>, source: BaseNode = nu
       return [source]
     }
   }
-  else if(source && 'children' in source) {
+  else if (source && 'children' in source) {
     if (targets.length === 1 && isNumeric(targets[0])) {
       items.push(source.children[Number(targets[0])])
     }
@@ -65,7 +66,7 @@ function getRelated (source: BaseNode) {
 // plugin
 // ---------------------------------------------------------------------------------------------------------------------
 
-type Action = 'number'| 'first'| 'last'| 'prev'| 'next' | 'parent' | 'children'
+type Action = 'number' | 'first' | 'last' | 'prev' | 'next' | 'parent' | 'children'
 
 function filterItems (items: SceneNode[], action: Action, source: SceneNode = undefined) {
   source = source || items[0]
@@ -81,7 +82,7 @@ function filterItems (items: SceneNode[], action: Action, source: SceneNode = un
   else if (action === 'prev' || action === 'next') {
     const dir = action === 'prev' ? -1 : 1
     const index = items.indexOf(source) + dir
-    return items[loop(index, items)]
+    return items[wrap(index, items)]
   }
   else {
     return items
@@ -133,7 +134,7 @@ function onSelection () {
     }
     postMessage('result', { message })
   }
-  catch(err) {
+  catch (err) {
     // nothing
   }
 }
@@ -154,7 +155,7 @@ if (figma.command === 'open' || !figma.command) {
   })
   onSelection()
   handleMessage({
-    select({ action }) {
+    select ({ action }) {
       selectItems(action)
     },
     cancel () {

@@ -1,5 +1,8 @@
-import { toArray } from './general'
+import { toArray } from './array'
 
+/**
+ * Get the current selection sorted by position
+ */
 export function getSelection (): SceneNode[]
 export function getSelection (first: boolean): SceneNode
 export function getSelection (first?: boolean) {
@@ -12,6 +15,9 @@ export function getSelection (first?: boolean) {
     : selection
 }
 
+/**
+ * Set the selection
+ */
 export function setSelection (nodes) {
   try {
     return figma.currentPage.selection = toArray(nodes).filter(e => e)

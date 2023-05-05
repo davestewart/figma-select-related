@@ -1,15 +1,13 @@
+/**
+ * Check if a value is number-like
+ */
 export function isNumeric (value) {
   return typeof value === 'number' || /^\d+(\.\d+)?$/.test(value)
 }
 
-export function toArray (value) {
-  return value === undefined
-    ? []
-    : Array.isArray(value)
-      ? value
-      : [value]
-}
-
+/**
+ * Clamp a number between lower and upper bounds
+ */
 export function clamp (value: number, length: number | any[]) {
   const min = 0
   const max = Array.isArray(length) ? length.length : length
@@ -22,7 +20,10 @@ export function clamp (value: number, length: number | any[]) {
   return value
 }
 
-export function loop (value: number, length: number | any[]) {
+/**
+ * Wrap a number at lower and upper bounds
+ */
+export function wrap (value: number, length: number | any[]) {
   const min = 0
   const max = Array.isArray(length) ? length.length : length
   if (value < min) {

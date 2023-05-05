@@ -23,7 +23,7 @@ export function isShape (node: BaseNode) {
     || node.type === 'RECTANGLE'
 }
 
-export function isFigjam (node: BaseNode) {
+export function isFigJam (node: BaseNode) {
   return node.type === 'CODE_BLOCK'
     || node.type === 'CONNECTOR'
     || node.type === 'EMBED'
