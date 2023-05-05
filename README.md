@@ -10,7 +10,7 @@ Let's say you have a UI component with subcomponents `icon`, `title` and `text`:
 
 You use this component in a list, and you want to change the individual icons.
 
-The **Select Related** plugin identifies **related** components (i.e. cousins) based on their **hierarchical position**:
+The **Select Related** plugin identifies **related** components (i.e. cousins) based on their **relative hierarchical position**:
 
 ![](art/figma-components.png)
 
@@ -19,7 +19,9 @@ Selecting items this way is useful when:
 - you cannot select by similar properties
 - you want to contain selection to the closest common ancestor
 
-Note that the algorithm that determines relatedness should work to any depth where related hierarchies have the same **names**, and the related items the same **index** (this may be tweaked in a future release).
+Note that the algorithm that determines relatedness should work to any depth where related hierarchies have the same **names**.
+
+> Note that the next release will add functionality to tweak scope, relation and comparison.
 
 ## Installation
 

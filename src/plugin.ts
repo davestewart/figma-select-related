@@ -50,12 +50,19 @@ function getRelated (source: BaseNode) {
   if (isRoot(target.parent)) {
     return items
   }
+
+  // walk up tree
   while (target?.parent && !found) {
-    const id = ids.length
-      ? target.name
-      : target.parent.children.indexOf(target as SceneNode)
-    ids.unshift(id)
+    // choose based on name for everything, but index for final match
+    // const id = ids.length
+    //   ? target.name
+    //   : target.parent.children.indexOf(target as SceneNode)
+
+    // choose based on name
+    ids.unshift(target.name)
     target = target?.parent
+
+    // walk down tree
     items = getByPath([...ids], target)
     found = items.filter(item => item !== source).length > 0
   }
